@@ -1,5 +1,6 @@
 package com.enigmacamp.mandiricode
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,10 +12,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(){
 
     val progresInfo = 100
-    val activityName="MAIN ACTIVITY"
+    val activityName="MAIN ACTIVITY 1"
     private lateinit var pencet: Button
     private lateinit var progressInfo : ProgressBar
     private lateinit var tekan : Button
@@ -22,14 +23,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.i(activityName,"OnCreate() DIPANGGIL")
+        Log.i(activityName,"OnCreate() Activity1")
         pencet = findViewById(R.id.pencet)
         tekan = findViewById(R.id.tekan)
         progressInfo = findViewById(R.id.progressBar)
         progressInfo.max = progresInfo
-        pencet.setOnClickListener(this)
-        tekan.setOnClickListener(this)
-
+//        pencet.setOnClickListener(this)
+//        tekan.setOnClickListener(this)
+    }
+    fun moveToSecondActivity(view: View){
+        val intent = Intent(this, MainActivity2::class.java)
+        startActivity(intent)
     }
 
     override fun onStart() {
@@ -62,15 +66,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Log.i(activityName,"OnRestart()")
     }
 
-    override fun onClick(v: View?) {
-        if (v == pencet){
-            CoroutineScope(Dispatchers.IO).launch{
-                for (i in 1..100){
-                    println(i)
-                    Thread.sleep(500)
-                    progressInfo.setProgress(i)
-                }
-            }
-        }
-    }
+//    override fun onClick(v: View?) {
+//        Log.i(v.toString(),"V dipanggil")
+//        if (v == pencet){
+//            CoroutineScope(Dispatchers.IO).launch{
+//                for (i in 1..100){
+//                    println(i)
+//                    Thread.sleep(500)
+//                    progressInfo.setProgress(i)
+//                }
+//            }
+//        }
+//    }
 }
