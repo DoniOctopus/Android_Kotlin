@@ -1,5 +1,6 @@
 package com.enigmacamp.mandiricode.config
 
+import com.enigmacamp.mandiricode.utils.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -7,8 +8,7 @@ class RetfofitBuilder {
 
     //buat static object
 companion object{
-        //panggil si URLnya
-    var BASE_URL = "https://jsonplaceholder.typicode.com"
+
 
         //buat retrofinya
     fun creatRetrofit() : Retrofit {
